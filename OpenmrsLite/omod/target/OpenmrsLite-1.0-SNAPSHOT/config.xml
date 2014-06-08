@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+	<!-- Module Properties -->
+	<id>OpenmrsLite</id>
+	<name>OpenmrsLite Module</name>
+	<version>1.0-SNAPSHOT</version>
+	<package>org.openmrs.module.OpenmrsLite</package>
+	<author>shubham</author>
+	<description>
+		A version of reference application that can be run on slow internet
+	</description>
+	<updateURL>https://modules.openmrs.org/modules/download/OpenmrsLite/update.rdf</updateURL>
+	<require_version>1.8.2</require_version>
+	<!-- / Module Properties -->
+
+	
+	<!-- Required Modules -->
+	<require_modules>
+																
+			
+		<require_module>
+		    org.openmrs.module.uiframework
+		</require_module>
+	 
+		 <require_module>
+	                org.openmrs.module.appframework
+	         </require_module>
+	
+	</require_modules>
+	<!-- / Required Modules -->
+	
+	<!-- Module Activator -->
+	<activator>org.openmrs.module.OpenmrsLite.OpenmrsLiteActivator</activator>
+	
+	
+	<!-- Adds link to admin page -->
+	<extension>
+		<point>org.openmrs.admin.list</point>
+		<class>org.openmrs.module.OpenmrsLite.extension.html.AdminList</class>
+	</extension>
+	
+	<!-- Maps hibernate file's, if present -->
+	<mappingFiles>
+				
+	</mappingFiles>
+
+	<!-- Internationalization -->
+	<!-- All message codes should start with OpenmrsLite. -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+
+</module>
+
