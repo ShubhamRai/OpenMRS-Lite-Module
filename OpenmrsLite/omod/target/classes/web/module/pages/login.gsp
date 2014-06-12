@@ -3,7 +3,6 @@
     ui.includeCss("OpenmrsLite", "login.css")
 %>  
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +16,7 @@
     var OPENMRS_CONTEXT_PATH = '${ ui.contextPath() }';
 </script>
 
+${ ui.includeFragment("OpenmrsLite", "infoAndErrorMessages") }
 
 <header>
     <div class="logo">
@@ -55,10 +55,7 @@
                         ${ ui.message("OpenmrsLite.login.sessionLocation") }:
                     </label>
                     <ul id="sessionLocation" class="select">
-		    	<% locations.sort { ui.format(it) }.each { %>
-	          	  <li id="${it.name}" value="${it.id}">${ui.format(it)}</li>
-	           	  <% } %>
-                    </ul>
+                   </ul>
                 </p>
 
 

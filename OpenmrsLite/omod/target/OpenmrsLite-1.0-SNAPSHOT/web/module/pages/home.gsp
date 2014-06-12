@@ -1,17 +1,19 @@
 <%
-
-    def htmlSafeId = { extension ->
-        "${ extension.id.replace(".", "-") }-${ extension.id.replace(".", "-") }-extension"
-    }
+      ui.decorateWith("appui", "standardEmrPage", [ title: ui.message("OpenmrsLite.home.title") ])
+  
+      def htmlSafeId = { extension ->
+         "${ extension.id.replace(".", "-") }-${ extension.id.replace(".", "-") }-extension"
+        }
 %>
+
 
 <div id="home-container">
 
 	<h1>${ui.message("OpenmrsLite.home.heading")}</h1>
 
-    <% if (authenticatedUser) { %>
+    <% if (context.authenticated) { %>
         <h4>
-            ${ ui.message("OpenmrsLite.home.currentUser", ui.format(authenticatedUser), ui.format(sessionContext.sessionLocation)) }
+            ${ ui.message("OpenmrsLite.home.currentUser", ui.format(context.authenticatedUser), ui.format(sessionContext.sessionLocation)) }
         </h4>
     <% } else { %>
         <h4>
@@ -20,14 +22,6 @@
     <% } %>
 
     <div id="apps">
-        <% extensions.each { ext -> %>
-            <a id="${ htmlSafeId(ext) }" href="/${ contextPath }/${ ext.url }" class="button app big">
-                <% if (ext.icon) { %>
-                   <i class="${ ext.icon }"></i>
-                <% } %>
-                ${ ui.message(ext.label) }
-            </a>
-        <% } %>
     </div>
 
 </div>
