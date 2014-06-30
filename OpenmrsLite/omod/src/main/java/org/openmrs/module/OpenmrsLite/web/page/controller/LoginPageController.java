@@ -65,8 +65,8 @@ public class LoginPageController {
 	public String get(PageModel model,
 	                  UiUtils ui,
 	                  PageRequest pageRequest,
-	                //  @CookieValue(value = COOKIE_NAME_LAST_SESSION_LOCATION, required = false) String lastSessionLocationId,
-	                 // @SpringBean("locationService") LocationService locationService,
+	                  @CookieValue(value = COOKIE_NAME_LAST_SESSION_LOCATION, required = false) String lastSessionLocationId,
+	                  @SpringBean("locationService") LocationService locationService,
 			  @SpringBean("appFrameworkService") AppFrameworkService appFrameworkService ) {
 
 		if (Context.isAuthenticated()) {
@@ -84,20 +84,20 @@ public class LoginPageController {
 			redirectUrl = "";
 
 		model.addAttribute(REQUEST_PARAMETER_NAME_REDIRECT_URL, redirectUrl);
-	//	Location lastSessionLocation = null;
+		Location lastSessionLocation = null;
 		try {
-	//		Context.addProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
-	//		model.addAttribute("locations", appFrameworkService.getLoginLocations());
-	//		lastSessionLocation = locationService.getLocation(Integer.valueOf(lastSessionLocationId));
+			Context.addProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
+			model.addAttribute("locations", appFrameworkService.getLoginLocations());
+			lastSessionLocation = locationService.getLocation(Integer.valueOf(lastSessionLocationId));
 		}
 		catch (Exception ex) {
-			// pass
+		//	 pass
 		}
 		finally {
-	//		Context.removeProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
+			Context.removeProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
 		}
 
-	//	model.addAttribute("lastSessionLocation", lastSessionLocation);
+		model.addAttribute("lastSessionLocation", lastSessionLocation);
 
 		return null;
 	}
@@ -120,24 +120,24 @@ public class LoginPageController {
 	 */
 	public String post(@RequestParam(value = "username", required = false) String username,
 	                   @RequestParam(value = "password", required = false) String password,
-	                   //@RequestParam(value = "sessionLocation", required = false) Integer sessionLocationId,
-	                   //@SpringBean("locationService") LocationService locationService,
-			   UiUtils ui, PageRequest pageRequest){
-	                   //UiSessionContext sessionContext) {
+	                   @RequestParam(value = "sessionLocation", required = false) Integer sessionLocationId,
+	                   @SpringBean("locationService") LocationService locationService,
+			   UiUtils ui, PageRequest pageRequest,
+	                   UiSessionContext sessionContext){
 
 		String redirectUrl = pageRequest.getRequest().getParameter(REQUEST_PARAMETER_NAME_REDIRECT_URL);
 		redirectUrl = getRelativeUrl(redirectUrl, pageRequest);
-	//	Location sessionLocation = null;
-	//	if (sessionLocationId != null) {
+		Location sessionLocation = null;
+		if (sessionLocationId != null) {
 			try {
 				// TODO as above, grant this privilege to Anonymous instead of using a proxy privilege
-	//			Context.addProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
-	//			sessionLocation = locationService.getLocation(sessionLocationId);
+				Context.addProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
+				sessionLocation = locationService.getLocation(sessionLocationId);
 			}
 			finally {
-	//			Context.removeProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
+				Context.removeProxyPrivilege(PrivilegeConstants.VIEW_LOCATIONS);
 			}
-//		}
+		}
 
 		//TODO uncomment this to replace the if clause after it
 	//	if (sessionLocation != null){ 
@@ -148,14 +148,14 @@ public class LoginPageController {
 				Context.authenticate(username, password);
 				
 				if (Context.isAuthenticated()) {
-					System.out.println("hello\n\n\n");
+					
 					if (log.isDebugEnabled())
 						log.debug("User has successfully authenticated");
 					
-				//	pageRequest.getSession().setAttribute(UiSessionContext.LOCATION_SESSION_ATTRIBUTE,
-				//	    sessionLocation.getId());
+			//		pageRequest.getSession().setAttribute(UiSessionContext.LOCATION_SESSION_ATTRIBUTE,
+			//		    sessionLocation.getId());
 					
-				//	sessionContext.setSessionLocation(sessionLocation);
+			//		sessionContext.setSessionLocation(sessionLocation);
 					
 					if (StringUtils.isNotBlank(redirectUrl)) {
 						//don't redirect back to the login page on success nor an external url
@@ -181,14 +181,14 @@ public class LoginPageController {
 				    ui.message(OpenmrsLiteConstants.MODULE_ID + ".error.login.fail"));
 			}
 			
-/*		} else if (sessionLocation == null) {
-			pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
-			    ui.message("OpenmrsLite.login.error.locationRequired"));
-		} else {
+	//	} else if (sessionLocation == null) {
+		//	pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
+		//	    ui.message("OpenmrsLite.login.error.locationRequired"));
+	//	} else {
 			// the UI shouldn't allow this, but protect against it just in case
-			pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
-			    ui.message("OpenmrsLite.login.error.invalidLocation", sessionLocation.getName()));
-		}*/
+		//	pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
+		//	    ui.message("OpenmrsLite.login.error.invalidLocation", sessionLocation.getName()));
+	//	}
 		
 		if (log.isDebugEnabled())
 			log.debug("Sending user back to login page");

@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.OpenmrsLite.controller;
+package org.openmrs.module.OpenmrsLite.page.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -53,8 +53,8 @@ public class HomePageController {
 	public void get(PageModel model, @SpringBean("appFrameworkService") AppFrameworkService appFrameworkService,
 	                       PageRequest request, UiUtils ui) throws IOException {
 
-		model.addAttribute("extensions",
-		    appFrameworkService.getExtensionsForCurrentUser(OpenmrsLiteConstants.HOME_PAGE_EXTENSION_POINT_ID));
+	model.addAttribute("extensions",
+	        appFrameworkService.getExtensionsForCurrentUser(OpenmrsLiteConstants.HOME_PAGE_EXTENSION_POINT_ID));
         model.addAttribute("authenticatedUser", Context.getAuthenticatedUser());
     }
 	

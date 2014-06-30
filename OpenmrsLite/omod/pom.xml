@@ -157,7 +157,7 @@
 							<scope>provided</scope>
 						</dependency>
 			
-				<!--		<dependency>
+						<dependency>
 							<groupId>org.openmrs.module</groupId>
 							<artifactId>htmlformentry-api</artifactId>
 							<version>${htmlformentryVersion}</version>
@@ -169,7 +169,7 @@
 						       <artifactId>htmlformentryui-api</artifactId>
 						       <version>${htmlformentryuiVersion}</version>
 						       <scope>provided</scope>
-						</dependency>-->
+						</dependency>
 
 
 		

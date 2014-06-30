@@ -1,8 +1,3 @@
-<%
-    ui.includeFragment("appui", "standardEmrIncludes")
-    ui.includeCss("OpenmrsLite", "login.css")
-%>  
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +16,7 @@ ${ ui.includeFragment("OpenmrsLite", "infoAndErrorMessages") }
 <header>
     <div class="logo">
         <a href="${ui.pageLink("OpenmrsLite", "home")}">
-	<img src="${ui.resourceLink("OpenmrsLite", "images/openMrsLogo.png")}",height="20" width="20"/>
+	<img src="${ui.resourceLink("OpenmrsLite", "images/openMrsLogo.png")}"/>
 	</a>
     </div>
 </header>
@@ -55,8 +50,13 @@ ${ ui.includeFragment("OpenmrsLite", "infoAndErrorMessages") }
                         ${ ui.message("OpenmrsLite.login.sessionLocation") }:
                     </label>
                     <ul id="sessionLocation" class="select">
-                   </ul>
+                   	 <% locations.sort { ui.format(it) }.each { %>
+				 <li id="${it.name}" value="${it.id}">${ui.format(it)}</li>
+	              <% } %>
+		    </ul>
                 </p>
+
+
 
 
                 <p></p>

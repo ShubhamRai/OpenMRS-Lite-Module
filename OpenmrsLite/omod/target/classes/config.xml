@@ -37,6 +37,15 @@
 		       org.openmrs.module.appui
 		   </require_module>
 
+		   <require_module version="2.2">
+		        org.openmrs.module.htmlformentry
+		    </require_module>
+		     
+		    <require_module version="1.0">
+		        org.openmrs.module.htmlformentryui
+		    </require_module>
+
+
 	
 	</require_modules>
 	<!-- / Required Modules -->
@@ -71,6 +80,22 @@
 		<file>messages_es.properties</file>
 	</messages>
 	<!-- /Internationalization -->
+
+	<privilege>
+	        <name>App: OpenmrsLite.vitals</name>
+	        <description>Able to access the vitals app</description>
+	 </privilege>
+	   
+	  <privilege>
+	        <name>App: OpenmrsLite.legacyAdmin</name>
+	        <description>Able to access the advanced administration app</description>
+         </privilege>
+ 
+         <privilege>
+                 <name>App: OpenmrsLite.styleGuide</name>
+                 <description>Able to access the style guide app</description>
+         </privilege>
+
 
 </module>
 

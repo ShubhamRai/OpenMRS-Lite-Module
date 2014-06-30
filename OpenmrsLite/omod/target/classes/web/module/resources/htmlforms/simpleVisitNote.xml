@@ -41,7 +41,7 @@
     </style>
 
     <ifMode mode="VIEW" include="false">
-        <h2><uimessage code="referenceapplication.visitNote.title"/></h2>
+        <h2><uimessage code="OpenmrsLite.visitNote.title"/></h2>
 
         <div id="who-when-where">
             <p id="who">

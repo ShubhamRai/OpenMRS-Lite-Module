@@ -140,7 +140,7 @@
         </fieldset>
     </div>
 
-    <section id="vitals" sectionTag="section" headerStyle="title" headerCode="referenceapplication.vitals.title">
+    <section id="vitals" sectionTag="section" headerStyle="title" headerCode="OpenmrsLite.vitals.title">
         <fieldset>
             <legend><lookup expression="fn.getConcept('CIEL:5090').name"/></legend>
             <h3><lookup expression="fn.getConcept('CIEL:5090').name"/></h3>
@@ -165,22 +165,22 @@
         <includeIf velocityTest="$patient.getAge($encounter.getEncounterDatetime()) > 5">
 
             <fieldset>
-                <legend><uimessage code="referenceapplication.vitals.bmi.title"/></legend>
-                <h3><uimessage code="referenceapplication.vitals.bmi.title"/></h3>
+                <legend><uimessage code="OpenmrsLite.vitals.bmi.title"/></legend>
+                <h3><uimessage code="OpenmrsLite.vitals.bmi.title"/></h3>
 
                 <span id="no-calculated-bmi">
-                    <uimessage code="referenceapplication.vitals.bmi.instructions"/>
+                    <uimessage code="OpenmrsLite.vitals.bmi.instructions"/>
                 </span>
                 <span id="calculated-bmi-wrapper">
                     <ifMode mode="VIEW" include="false">
-                        <uimessage code="referenceapplication.vitals.bmi.display"/>
+                        <uimessage code="OpenmrsLite.vitals.bmi.display"/>
                     </ifMode>
                     <span id='calculated-bmi'></span>
                 </span>
 
                 <p id="calculated-bmi-continue">
                     <input type="hidden" name="focus-in-bmi-question" id="hidden-calculated-bmi" />
-                    <uimessage code="referenceapplication.vitals.calculatedField.continue"/>
+                    <uimessage code="OpenmrsLite.vitals.calculatedField.continue"/>
                 </p>
             </fieldset>
 
@@ -215,8 +215,8 @@
         </fieldset>
 
         <fieldset field-separator=" / ">
-            <legend><uimessage code="referenceapplication.vitals.bloodPressure.title"/></legend>
-            <h3><uimessage code="referenceapplication.vitals.bloodPressure.title"/></h3>
+            <legend><uimessage code="OpenmrsLite.vitals.bloodPressure.title"/></legend>
+            <h3><uimessage code="OpenmrsLite.vitals.bloodPressure.title"/></h3>
 
             <p class="left">
                 <obs conceptId="CIEL:5085" id="bp_systolic"/>
