@@ -1,0 +1,33 @@
+[
+    {
+        "id": "${project.parent.groupId}.${project.parent.artifactId}.createVisit",
+        "extensionPointId": "patientDashboard.overallActions",
+        "type": "script",
+        "label": "OpenmrsLite.task.startVisit.label",
+        "script": "visit.showQuickVisitCreationDialog({{patientId}})",
+        "icon": "icon-check-in",
+        "order": -20,
+        "require": "!visit && !patientDead",
+        "requiredPrivilege": "Task: OpenmrsLite.createVisit"
+    },
+    {
+        "id": "${project.parent.groupId}.${project.parent.artifactId}.createRetrospectiveVisit",
+        "extensionPointId": "patientDashboard.overallActions",
+        "type": "script",
+        "label": "OpenmrsLite.task.createRetrospectiveVisit.label",
+        "script": "visit.showRetrospectiveVisitCreationDialog()",
+        "icon": "icon-plus",
+        "order": -12,
+        "requiredPrivilege": "Task: OpenmrsLite.createRetrospectiveVisit"
+    },
+    {
+        "id": "${project.parent.groupId}.${project.parent.artifactId}.mergeVisits",
+        "extensionPointId": "patientDashboard.overallActions",
+        "type": "link",
+        "label": "OpenmrsLite.task.mergeVisits.label",
+        "url": "OpenmrsLite/mergeVisits.page?patientId={{patientId}}",
+        "icon": "icon-link",
+        "order": 13,
+        "requiredPrivilege": "Task: OpenmrsLite.mergeVisits"
+    }
+]

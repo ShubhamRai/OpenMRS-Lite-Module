@@ -1,0 +1,51 @@
+[
+    {
+        "id": "OpenmrsLite.template.findPatient",
+        "description": "Basic patient search by ID or Name (using OpenMRS's standard patient search)",
+        "contextModel": [ "patientId" ],
+        "configOptions": [
+            {
+                "name": "afterSelectedUrl",
+                "description": "URL to go to after the user selects a patient. Supports {{patientId}}",
+                "defaultValue": "/OpenmrsLite/clinicianfacing/patient.page?patientId={{ patientId }}"
+            },
+            {
+                "name": "label",
+                "description": "Label used by the find patient widget",
+                "defaultValue": "OpenmrsLite.findPatient.app.label"
+            },
+            {
+                "name": "heading",
+                "description": "Heading used by the find patient widget",
+                "defaultValue": "OpenmrsLite.findPatient.app.label"
+            },
+            {
+                "name": "showLastViewedPatients",
+                "description": "Whether or not to show a list of the recently-viewed patients for the current user",
+                "defaultValue": true
+            }
+        ]
+    },
+	{
+		"id": "OpenmrsLite.template.activeVisits",
+		"description": "OpenmrsLite.activeVisits.app.description",
+		"configOptions": [
+			{
+				"name": "patientPageUrl",
+				"description": "URL pointing to a patient details page",
+				"defaultValue": "/OpenmrsLite/clinicianfacing/patient.page?patientId={{patientId}}"
+			}
+		]
+	},
+    {
+        "id": "OpenmrsLite.template.awaitingAdmission",
+        "description": "OpenmrsLite.app.awaitingAdmission.description",
+        "configOptions": [
+            {
+                "name": "patientPageUrl",
+                "description": "URL pointing to a patient details page",
+                "defaultValue": "/OpenmrsLite/clinicianfacing/patient.page?patientId={{patientId}}"
+            }
+        ]
+    }
+]

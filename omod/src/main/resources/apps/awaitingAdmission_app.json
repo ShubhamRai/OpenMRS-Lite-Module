@@ -1,0 +1,20 @@
+[
+    {
+        "id": "OpenmrsLite.awaitingAdmission",
+        "instanceOf": "OpenmrsLite.template.awaitingAdmission",
+        "description": "OpenmrsLite.awaitingAdmission.app.description",
+        "order": 10,
+        "extensions": [
+            {
+                "id": "${project.parent.groupId}.${project.parent.artifactId}.awaitingAdmissionHomepageLink",
+                "extensionPointId": "org.openmrs.OpenmrsLite.homepageLink",
+                "type": "link",
+                "label": "OpenmrsLite.app.awaitingAdmission.label",
+                "url": "OpenmrsLite/awaitingAdmission.page?app=OpenmrsLite.awaitingAdmission",
+                "icon": "icon-list-ul",
+                "requiredPrivilege": "App: OpenmrsLite.awaitingAdmission",
+                "featureToggle": "awaitingAdmission"
+            }
+        ]
+    }
+]
