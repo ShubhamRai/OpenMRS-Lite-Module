@@ -45,6 +45,12 @@ import org.openmrs.module.referencemetadata.ReferenceMetadataProperties;
 import org.openmrs.module.registrationcore.RegistrationCoreConstants;
 import org.openmrs.ui.framework.resource.ResourceFactory;
 
+import org.openmrs.PatientIdentifierType;
+import org.openmrs.module.emrapi.EmrApiConstants;
+import org.openmrs.module.idgen.IdentifierSource;
+import org.openmrs.module.idgen.service.IdentifierSourceService;
+
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -154,6 +160,11 @@ public class OpenmrsLiteActivator extends BaseModuleActivator {
             EncounterDispositionTagHandler encounterDispositionTagHandler = OpenmrsLiteActivator.setupEncounterDispositionTagHandler(emrApiProperties, dispositionService, adtService, featureToggles);
             htmlFormEntryService.addHandler(OpenmrsLiteConstants.HTMLFORMENTRY_ENCOUNTER_DISPOSITION_TAG_NAME, encounterDispositionTagHandler);
         }
+	
+
+	/**registration app**/
+	setupIdentifierTypeGlobalProperties(Context.getAdministrationService(), Context.getService(IdentifierSourceService.class));
+        super.started();
 
         log.info("OpenmrsLite Module started");
     }
@@ -243,6 +254,25 @@ public class OpenmrsLiteActivator extends BaseModuleActivator {
 			}
 		}
 	}
+
+
+	private void setupIdentifierTypeGlobalProperties(AdministrationService administrationService, IdentifierSourceService identifierSourceService) {
+        // set RegistrationCoreConstants.GP_IDENTIFIER_SOURCE_ID based off the autogeneration options of the primary
+        // identifier type from the EMR API module, if possible. (This may not be possible if things aren't configured right,
+        // e.g. due to module startup order, in which case we log a warning and continue.)
+        try {
+            EmrApiProperties emrApiProperties = Context.getRegisteredComponents(EmrApiProperties.class).iterator().next();
+            PatientIdentifierType primaryIdentifierType = emrApiProperties.getPrimaryIdentifierType();
+
+            IdentifierSource sourceForPrimaryType = identifierSourceService.getAutoGenerationOption(primaryIdentifierType).getSource();
+
+            administrationService.setGlobalProperty(RegistrationCoreConstants.GP_IDENTIFIER_SOURCE_ID, sourceForPrimaryType.getId().toString());
+        }
+        catch (Exception ex) {
+            log.warn("Failed to set global property for " + RegistrationCoreConstants.GP_IDENTIFIER_SOURCE_ID + " based on " + EmrApiConstants.PRIMARY_IDENTIFIER_TYPE + ". Will try again at next module startup.", ex);
+        }
+    }
+
 
 	
 }

@@ -1,0 +1,11 @@
+[
+    {
+        "id": "OpenmrsLite.homepage",
+        "extensionPoints": [
+            {
+                "id": "org.openmrs.OpenmrsLite.homepageLink",
+                "description": "OpenmrsLite.homepageExt.description"
+            }
+        ]
+    }
+]

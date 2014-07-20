@@ -20,7 +20,11 @@
 	
 	<!-- Required Modules -->
 	<require_modules>
-																											
+	
+	 <require_module version="${uicommonsVersion}">org.openmrs.module.uicommons</require_module>
+	 <require_module version="${registrationcoreVersion}">org.openmrs.module.registrationcore</require_module>
+	 	
+
 	<require_module version="${appframeworkVersion}">
 		org.openmrs.module.appframework
 	</require_module>
@@ -142,6 +146,11 @@
 		<name>App: OpenmrsLite.activeVisits</name>
 		<description>Able to access the active visits app</description>
 	</privilege>
+	
+	 <privilege>
+	         <name>App: OpenmrsLite.registerPatient</name>
+	         <description>Able to access the register patient app</description>
+	  </privilege>
 
 
 
