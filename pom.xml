@@ -49,11 +49,10 @@
 	<metadatasharingVersion>1.1.8</metadatasharingVersion>
         <namephoneticsVersion>1.4</namephoneticsVersion>
         <registrationcoreVersion>1.0</registrationcoreVersion>
-	<registrationappVersion>1.0</registrationappVersion>
         <serializationXstreamModuleVersion>0.2.7</serializationXstreamModuleVersion>
         <calculationModuleVersion>1.0</calculationModuleVersion>
-	 <htmlformentry19extVersion>1.4</htmlformentry19extVersion>
-	 <htmlformentryuiVersion>1.0</htmlformentryuiVersion>
+	<htmlformentry19extVersion>1.4</htmlformentry19extVersion>
+	<htmlformentryuiVersion>1.0</htmlformentryuiVersion>
 
 	</properties>
 
@@ -254,12 +253,6 @@
 		   <scope>provided</scope>
 	  </dependency>
 
-	   <dependency>
-	           <groupId>org.openmrs.module</groupId>
-	           <artifactId>uicommons-api</artifactId>
-	           <version>${uicommonsVersion}</version>
-	           <scope>provided</scope>
-	   </dependency>
 		
 
             <!-- End OpenMRS modules -->

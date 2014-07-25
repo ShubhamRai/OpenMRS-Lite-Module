@@ -1,9 +1,7 @@
 <%
     sessionContext.requireAuthentication()
 
-    ui.includeFragment("OpenmrsLite", "patientSearchIncludes")
-
-	def title = config.title ?: ui.message("emr.title")
+    def title = config.title ?: ui.message("emr.title")
 %>
 
 <!DOCTYPE html>
@@ -71,6 +69,5 @@ ${ ui.includeFragment("appui", "header") }
     <% } %>
 
 </script>
-
-    </body>
+ </body>
 </html>

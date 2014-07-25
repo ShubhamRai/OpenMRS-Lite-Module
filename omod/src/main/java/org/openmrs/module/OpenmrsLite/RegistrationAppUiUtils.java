@@ -90,7 +90,7 @@ public class RegistrationAppUiUtils {
 			if (StringUtils.isNotBlank(address.getLatitude())) {
 				if (template.getElementRegex() != null && StringUtils.isBlank(template.getElementRegex().get("latitude"))) {
 					if (!RegistrationAppUiUtils.isValidLatitude(address.getLatitude())) {
-						errors.reject("registrationapp.latitude.invalid");
+						errors.reject("OpenmrsLite.latitude.invalid");
 					}
 				}
 			}
@@ -98,7 +98,7 @@ public class RegistrationAppUiUtils {
 			if (StringUtils.isNotBlank(address.getLongitude())) {
 				if (template.getElementRegex() != null && StringUtils.isBlank(template.getElementRegex().get("longitude"))) {
 					if (!RegistrationAppUiUtils.isValidLongitude(address.getLongitude())) {
-						errors.reject("registrationapp.longitude.invalid");
+						errors.reject("OpenmrsLite.longitude.invalid");
 					}
 				}
 			}

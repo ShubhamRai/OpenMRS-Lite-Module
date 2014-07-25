@@ -1,3 +1,5 @@
+<% ui.includeCss("OpenmrsLite", "login.css")%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,15 +51,13 @@ ${ ui.includeFragment("OpenmrsLite", "infoAndErrorMessages") }
                     <label for="sessionLocation">
                         ${ ui.message("OpenmrsLite.login.sessionLocation") }:
                     </label>
-                    <ul id="sessionLocation" class="select">
+		</p>
+                    <select id="sessionLocation" name="sessionLocation">
                    	 <% locations.sort { ui.format(it) }.each { %>
-				 <li id="${it.name}" value="${it.id}">${ui.format(it)}</li>
+				<option value="${it.id}" id="${it.name}">${ui.format(it)}</option>
 	              <% } %>
-		    </ul>
-                </p>
-
-
-
+		    </select>
+               </p> </p>
 
                 <p></p>
                 <p>

@@ -9,7 +9,7 @@
     </span>
     <% if(!config.hideEditDemographicsButton) { %>
     <small class="left-margin">
-        <a href="/${contextPath}/registrationapp/editPatientContactInfo.page?patientId=${config.patient.patient.id}&appId=referenceapplication.registrationapp.registerPatient&returnUrl=${ui.urlEncode(ui.thisUrl())}">${ui.message("general.edit")}</a>
+        <a href="/${contextPath}/OpenmrsLite/editPatientContactInfo.page?patientId=${config.patient.patient.id}&appId=OpenmrsLite.OpenmrsLite.registerPatient&returnUrl=${ui.urlEncode(ui.thisUrl())}">${ui.message("general.edit")}</a>
     </small>
     <% } %>
 </div>

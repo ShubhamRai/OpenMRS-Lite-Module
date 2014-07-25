@@ -140,10 +140,9 @@ public class LoginPageController {
 		}
 
 		//TODO uncomment this to replace the if clause after it
-	//	if (sessionLocation != null){ 
+		if (sessionLocation != null){ 
 			// Set a cookie, so next time someone logs in on this machine, we can default to that same location
-			// pageRequest.setCookieValue(COOKIE_NAME_LAST_SESSION_LOCATION, sessionLocationId.toString());
-			
+			 pageRequest.setCookieValue(COOKIE_NAME_LAST_SESSION_LOCATION, sessionLocationId.toString());
 			try {
 				Context.authenticate(username, password);
 				
@@ -152,12 +151,12 @@ public class LoginPageController {
 					if (log.isDebugEnabled())
 						log.debug("User has successfully authenticated");
 					
-			//		pageRequest.getSession().setAttribute(UiSessionContext.LOCATION_SESSION_ATTRIBUTE,
-			//		    sessionLocation.getId());
+					pageRequest.getSession().setAttribute(UiSessionContext.LOCATION_SESSION_ATTRIBUTE,
+					    sessionLocation.getId());
 					
-			//		sessionContext.setSessionLocation(sessionLocation);
+					sessionContext.setSessionLocation(sessionLocation);
 					
-					if (StringUtils.isNotBlank(redirectUrl)) {
+				/*	if (StringUtils.isNotBlank(redirectUrl)) {
 						//don't redirect back to the login page on success nor an external url
 						if (!redirectUrl.contains("login.")) {
 							if (log.isDebugEnabled())
@@ -168,7 +167,7 @@ public class LoginPageController {
 							if (log.isDebugEnabled())
 								log.debug("Redirect contains 'login.', redirecting to home page");
 						}
-					}
+					}*/
 					
 					return "redirect:" + ui.pageLink(OpenmrsLiteConstants.MODULE_ID, "home");
 				}
@@ -181,14 +180,14 @@ public class LoginPageController {
 				    ui.message(OpenmrsLiteConstants.MODULE_ID + ".error.login.fail"));
 			}
 			
-	//	} else if (sessionLocation == null) {
-		//	pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
-		//	    ui.message("OpenmrsLite.login.error.locationRequired"));
-	//	} else {
+		} else if (sessionLocation == null) {
+			pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
+			    ui.message("OpenmrsLite.login.error.locationRequired"));
+		} else {
 			// the UI shouldn't allow this, but protect against it just in case
-		//	pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
-		//	    ui.message("OpenmrsLite.login.error.invalidLocation", sessionLocation.getName()));
-	//	}
+			pageRequest.getSession().setAttribute(OpenmrsLiteWebConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE,
+			    ui.message("OpenmrsLite.login.error.invalidLocation", sessionLocation.getName()));
+		}
 		
 		if (log.isDebugEnabled())
 			log.debug("Sending user back to login page");

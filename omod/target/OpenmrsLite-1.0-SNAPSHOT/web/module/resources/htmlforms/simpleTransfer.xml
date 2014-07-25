@@ -6,21 +6,21 @@
         });
     </script>
 
-    <h2><label><uimessage code="referenceapplication.simpleTransfer.title"/></label></h2>
+    <h2><label><uimessage code="OpenmrsLite.simpleTransfer.title"/></label></h2>
 
     <section id="discharge">
         <p>
-            <label><uimessage code="referenceapplication.simpleTransfer.transferDate"/></label>
+            <label><uimessage code="OpenmrsLite.simpleTransfer.transferDate"/></label>
             <encounterDate id="encounterDate" showTime="false" default="now"/>
         </p>
 
         <p>
-            <label><uimessage code="referenceapplication.simpleTransfer.transferringClinician"/></label>
+            <label><uimessage code="OpenmrsLite.simpleTransfer.transferringClinician"/></label>
             <encounterProviderAndRole default="currentUser" encounterRole="1" required="true"/>
         </p>
 
         <p id="location-container">
-            <label><uimessage code="referenceapplication.simpleTransfer.transferTo"/></label>
+            <label><uimessage code="OpenmrsLite.simpleTransfer.transferTo"/></label>
             <encounterLocation required="true" tags="Transfer Location"/>
         </p>
     </section>

@@ -6,21 +6,21 @@
         });
     </script>
 
-    <h2><label><uimessage code="referenceapplication.simpleDischarge.title"/></label></h2>
+    <h2><label><uimessage code="OpenmrsLite.simpleDischarge.title"/></label></h2>
 
     <section id="discharge">
         <p>
-            <label><uimessage code="referenceapplication.simpleDischarge.dischargeDate"/></label>
+            <label><uimessage code="OpenmrsLite.simpleDischarge.dischargeDate"/></label>
             <encounterDate id="encounterDate" showTime="false" default="now"/>
         </p>
 
         <p>
-            <label><uimessage code="referenceapplication.simpleDischarge.dischargingClinician"/></label>
+            <label><uimessage code="OpenmrsLite.simpleDischarge.dischargingClinician"/></label>
             <encounterProviderAndRole default="currentUser" encounterRole="1" required="true"/>
         </p>
 
         <p id="location-container">
-            <label><uimessage code="referenceapplication.simpleDischarge.dischargedFrom"/></label>
+            <label><uimessage code="OpenmrsLite.simpleDischarge.dischargedFrom"/></label>
             <encounterLocation required="true"/>
         </p>
     </section>

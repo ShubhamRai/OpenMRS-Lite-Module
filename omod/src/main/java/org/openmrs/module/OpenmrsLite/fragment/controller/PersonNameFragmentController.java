@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.registrationapp.fragment.controller;
+package org.openmrs.module.OpenmrsLite.fragment.controller;
 
 import java.io.StringWriter;
 import java.util.ArrayList;

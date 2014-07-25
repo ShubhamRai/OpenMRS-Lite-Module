@@ -1,6 +1,3 @@
-<%
-    ui.decorateWith("appui", "standardEmrPage")
-%>
 <script type="text/javascript">
     var breadcrumbs = [
         { icon: "icon-home", link: '/' + OPENMRS_CONTEXT_PATH + '/index.htm' },
@@ -81,3 +78,6 @@ ${ ui.includeFragment("uicommons", "widget/dataTable", [ object: "#active-visits
                                                                   ]
                                                         ]) }
 <% } %>
+<%
+    ui.decorateWith("appui", "standardEmrPage")
+%>
