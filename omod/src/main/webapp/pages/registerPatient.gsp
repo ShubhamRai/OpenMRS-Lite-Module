@@ -8,6 +8,7 @@
                           [label: ui.message("emr.gender.F"), value: 'F'] ]
 %>
 ${ ui.includeFragment("uicommons", "validationMessages")}
+${ ui.includeFragment("appui", "header") }
 
 
 <script type="text/javascript">

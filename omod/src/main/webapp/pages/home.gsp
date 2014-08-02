@@ -19,11 +19,19 @@
         <h5>
             ${ ui.message("OpenmrsLite.home.currentUser", ui.format(context.authenticatedUser), ui.format(sessionContext.sessionLocation)) }
         </h5>
+	<li class="logout">
+	 	<a href="/${contextPath}/logout">
+	         ${ui.message("emr.logout")}
+	         </a>
+	  </li>
+
     <% } else { %>
         <h5>
             <a href="login.htm">${ ui.message("OpenmrsLite.home.logIn") }</a>
         </h5>
     <% } %>
+
+
 
     <div id="apps">
     	 <% extensions.each { ext -> %>

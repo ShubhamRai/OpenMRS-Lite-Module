@@ -8,6 +8,7 @@
 	}
 %>
 ${ ui.includeFragment("uicommons", "validationMessages")}
+${ ui.includeFragment("appui", "header") }
 
 
 <script type="text/javascript">

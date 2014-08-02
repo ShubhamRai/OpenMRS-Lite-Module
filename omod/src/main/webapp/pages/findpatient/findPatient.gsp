@@ -1,5 +1,5 @@
 <%
-	ui.decorateWith("OpenmrsLite", "patientSearchPage")
+	ui.decorateWith("OpenmrsLite", "standardEmrPage")
  %>
 <script type="text/javascript">
     var breadcrumbs = [
